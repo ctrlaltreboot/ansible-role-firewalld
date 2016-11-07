@@ -1,0 +1,12 @@
+---
+- name: Ensure firewalld is running and enabled
+  service: name=firewalld state=running enabled=true
+
+- name: Enable services in firewalld
+  firewalld:
+    port: "{{ item.value.port }}"
+    permanent: yes
+    state: "{{ item.value.state }}"
+    zone: "{{ item.value.zone }}"
+    immediate: yes
+  with_dict: "{{ firewalld_services }}"

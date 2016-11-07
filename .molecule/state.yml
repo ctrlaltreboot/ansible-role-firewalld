@@ -1,0 +1,12 @@
+---
+converged: true
+created: true
+customconf: false
+default_platform: null
+default_provider: null
+driver: vagrant
+hosts:
+  testing-ansible-role-firewalld-el7:
+    groups:
+    - all
+multiple_platforms: null

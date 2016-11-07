@@ -1,0 +1,18 @@
+---
+firewalld_services:
+  ssh:
+    port: 22/tcp
+    zone: public
+    state: enabled
+  http:
+    port: 80/tcp
+    zone: public
+    state: enabled
+  https:
+    port: 443/tcp
+    zone: public
+    state: enabled
+  gogs_ssh:
+    port: 2222/tcp
+    zone: public
+    state: enabled

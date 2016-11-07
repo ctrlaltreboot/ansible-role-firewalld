@@ -1,0 +1,46 @@
+---
+molecule:
+  test:
+    sequence:
+      - destroy
+      - syntax
+      - create
+      - converge
+      - verify
+
+vagrant:
+  raw_config_args:
+    - "ssh.insert_key = false"
+
+  platforms:
+    - name: el7
+      box: centos/7
+      box_url: 'https://atlas.hashicorp.com/centos/boxes/7/versions/1609.01/providers/virtualbox.box'
+
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+      memory: 256
+      cpus: 1
+
+  instances:
+    - name: testing-ansible-role-firewalld
+      ansible_groups:
+        - all
+      interfaces:
+        - network_name: private_network
+          type: dhcp
+          auto_config: true
+      options:
+        append_platform_to_hostname: yes
+
+ansible:
+  playbook: tests/playbook.yml
+
+verifier:
+  name: testinfra
+
+driver:
+  name: vagrant
+
