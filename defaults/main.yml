@@ -12,7 +12,3 @@ firewalld_services:
     port: 443/tcp
     zone: public
     state: enabled
-  gogs_ssh:
-    port: 2222/tcp
-    zone: public
-    state: enabled
